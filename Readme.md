@@ -3,7 +3,7 @@
 Before proceeding,
 ### Note: As per terms and conditions of google services, they don't recommend you to scrap the data. Please [Terms and Service document](https://cloud.google.com/maps-platform/terms?hl=en) by google.
 
-I scrapped the data for my specific personal use case I wanted to analyse few a place before visiting.
+I scrapped the data for my specific personal use case, I wanted to analyse few place before visiting.
  
 ## How to use
 - Step1 - Clone the repo on your machine, and install necessary libraries
