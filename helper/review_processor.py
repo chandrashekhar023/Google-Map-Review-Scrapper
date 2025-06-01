@@ -19,14 +19,14 @@ class MapReviewProcessor:
                         for key in constants[sec][sub_sec].keys():
                             if key not in self.output_data[sec].keys():
                                 self.output_data[sec][key] = []
-                            if constants[sec][sub_sec]['info_method'] == 'text':
-                                data_soup = soup.find(constants[sec][sub_sec]['tag'], constants[sec][sub_sec]['class'])
+                            if constants[sec][sub_sec][key]['info_method'] == 'text':
+                                data_soup = soup.find(constants[sec][sub_sec][key]['tag'], constants[sec][sub_sec][key]['class'])
                                 if data_soup is not None:
                                     self.output_data[sec][key].append(data_soup.text)
                                 else:
                                     self.output_data[sec][key].append(np.nan)
-                            elif constants[sec][sub_sec]['info_method'] == 'aria-label':
-                                data_soup = soup.find(constants[sec][sub_sec]['tag'], constants[sec][sub_sec]['class'])
+                            elif constants[sec][sub_sec][key]['info_method'] == 'aria-label':
+                                data_soup = soup.find(constants[sec][sub_sec][key]['tag'], constants[sec][sub_sec][key]['class'])
                                 if data_soup is not None:
                                     self.output_data[sec][key].append(data_soup.get('aria-label'))
                                 else:
@@ -35,25 +35,34 @@ class MapReviewProcessor:
                     elif sub_sec == 'nested':
                         for nested in constants[sec][sub_sec].keys():
                             sub_soup = soup.find(constants[sec][sub_sec][nested]['tag'], constants[sec][sub_sec][nested]['class'])
-                            for nested_sub_sec in constants[sec][sub_sec][nested]:
-                                if nested_sub_sec == "outer":
-                                    for key in constants[sec][sub_sec][nested][nested_sub_sec].keys():
-                                        if key not in self.output_data[sec].keys():
-                                            self.output_data[sec][key] = []
-                                        if constants[sec][sub_sec]['info_method'] == 'text':
-                                            data_soup = sub_soup.find(constants[sec][sub_sec]['tag'],
-                                                                  constants[sec][sub_sec]['class'])
-                                            if data_soup is not None:
-                                                self.output_data[sec][key].append(data_soup.text)
-                                            else:
-                                                self.output_data[sec][key].append(np.nan)
-                                        elif constants[sec][sub_sec]['info_method'] == 'aria-label':
-                                            data_soup = sub_soup.find(constants[sec][sub_sec]['tag'],
-                                                                  constants[sec][sub_sec]['class'])
-                                            if data_soup is not None:
-                                                self.output_data[sec][key].append(data_soup.get('aria-label'))
-                                            else:
-                                                self.output_data[sec][key].append(np.nan)
+                            if sub_soup is not None:
+                                for nested_sub_sec in constants[sec][sub_sec][nested]:
+                                    if nested_sub_sec == "outer":
+                                        for key in constants[sec][sub_sec][nested][nested_sub_sec].keys():
+                                            if key not in self.output_data[sec].keys():
+                                                self.output_data[sec][key] = []
+                                            if constants[sec][sub_sec][nested][nested_sub_sec][key]['info_method'] == 'text':
+                                                data_soup = sub_soup.find(constants[sec][sub_sec][nested][nested_sub_sec][key]['tag'],
+                                                                      constants[sec][sub_sec][nested][nested_sub_sec][key]['class'])
+                                                if data_soup is not None:
+                                                    self.output_data[sec][key].append(data_soup.text)
+                                                else:
+                                                    self.output_data[sec][key].append(np.nan)
+                                            elif constants[sec][sub_sec][nested][nested_sub_sec][key]['info_method'] == 'aria-label':
+                                                data_soup = sub_soup.find(constants[sec][sub_sec][nested][nested_sub_sec][key]['tag'],
+                                                                      constants[sec][sub_sec][nested][nested_sub_sec][key]['class'])
+                                                if data_soup is not None:
+                                                    self.output_data[sec][key].append(data_soup.get('aria-label'))
+                                                else:
+                                                    self.output_data[sec][key].append(np.nan)
+                            else:
+                                for nested_sub_sec in constants[sec][sub_sec][nested]:
+                                    if nested_sub_sec == "outer":
+                                        for key in constants[sec][sub_sec][nested][nested_sub_sec].keys():
+                                            if key not in self.output_data[sec].keys():
+                                                self.output_data[sec][key] = []
+                                            self.output_data[sec][key].append(np.nan)
+
 
     def save_as_csv(self, filename : str):
         if not filename.endswith('.csv'):

@@ -12,4 +12,4 @@ I scrapped the data for my specific personal use case I wanted to analyse few a 
 - Step4 - Open scrap.py
 - Step5 - Locate website local variable and replace the existing link with your link
 - Step6 - Run scrap.py, and scrapping will start.
-- Step7 - You can convert the saved html file pandas dataframe and csv by using MapReviewProcessor class in review_process.py module
+- Step7 - You can convert the saved html file pandas dataframe and csv by using extract_reviews.py file by modifying correct path of html
