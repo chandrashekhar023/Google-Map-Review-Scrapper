@@ -2,8 +2,8 @@
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 import time
-from process_run_time_html import PageData, save_html_file
-from web_page_constants import page_constants
+from helper.process_run_time_html import PageData, save_html_file
+from helper.web_page_constants import page_constants
 
 # ------------------------------Enter valid map link------------------------------------
 # website = "https://www.google.com/maps/place/Dr.+Suraaj+Clinic+%E2%80%93+MD+Physician+%2F+clinic+and+wellness+center/@18.5962763,73.7703322,17z/data=!4m16!1m9!3m8!1s0x3bc2b9255067bb77:0x688a9d8672961266!2sDr.+Suraaj+Clinic+%E2%80%93+MD+Physician+%2F+clinic+and+wellness+center!8m2!3d18.5962712!4d73.7729071!9m1!1b1!16s%2Fg%2F11g9vvhgxy!3m5!1s0x3bc2b9255067bb77:0x688a9d8672961266!8m2!3d18.5962712!4d73.7729071!16s%2Fg%2F11g9vvhgxy?entry=ttu&g_ep=EgoyMDI1MDUyNi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"

@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from lxml import html
-from web_page_constants import page_constants
+from helper.web_page_constants import page_constants
 import os
 
 
