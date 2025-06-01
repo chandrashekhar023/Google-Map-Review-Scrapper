@@ -7,7 +7,6 @@ from helper.web_page_constants import page_constants
 
 # ------------------------------Enter valid map link------------------------------------
 # website = "https://www.google.com/maps/place/Dr.+Suraaj+Clinic+%E2%80%93+MD+Physician+%2F+clinic+and+wellness+center/@18.5962763,73.7703322,17z/data=!4m16!1m9!3m8!1s0x3bc2b9255067bb77:0x688a9d8672961266!2sDr.+Suraaj+Clinic+%E2%80%93+MD+Physician+%2F+clinic+and+wellness+center!8m2!3d18.5962712!4d73.7729071!9m1!1b1!16s%2Fg%2F11g9vvhgxy!3m5!1s0x3bc2b9255067bb77:0x688a9d8672961266!8m2!3d18.5962712!4d73.7729071!16s%2Fg%2F11g9vvhgxy?entry=ttu&g_ep=EgoyMDI1MDUyNi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
-# website = "https://www.google.com/maps/place/%E0%A4%B8%E0%A4%BE%E0%A4%82%E0%A4%88+%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%A1%E0%A4%B0%E0%A5%8D%E0%A4%B8+%E0%A4%AE%E0%A5%87%E0%A4%98%E0%A4%BE,+Aroud+Road,+Megha,+Chhattisgarh+493662/@20.7898125,81.8031875,17z/data=!4m6!3m5!1s0x3a2f369782e87a43:0xd30ed0a4ba715396!8m2!3d20.7898125!4d81.8031875!16s%2Fg%2F11gfny5h5t?g_ep=Eg1tbF8yMDI1MDUyNF8wIJvbDyoASAJQAQ%3D%3D"
 website = "https://www.google.com/maps/place/Phoenix+Mall+of+the+Millennium/@18.6006257,73.7540085,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2b9dc4ce5ac9f:0x7fdeb0087efc3a7f!8m2!3d18.6006206!4d73.7565834!16s%2Fg%2F11flgdmx7v?entry=ttu&g_ep=EgoyMDI1MDUyNy4wIKXMDSoASAFQAw%3D%3D"
 
 # this name will update_automatically to place name
