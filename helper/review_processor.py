@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import numpy as np
 import pandas as pd
-
+from tqdm import tqdm
 
 class MapReviewProcessor:
 
@@ -13,7 +13,7 @@ class MapReviewProcessor:
         for sec in constants.keys():
             self.output_data[sec] = {}
             sec_soup_list = self.main_page_soup.find_all(constants[sec]['tag'], constants[sec]['class'])
-            for soup in sec_soup_list:
+            for idx, soup in enumerate(tqdm(sec_soup_list,postfix="Reviews")):
                 for sub_sec in constants[sec].keys():
                     if sub_sec == "outer":
                         for key in constants[sec][sub_sec].keys():
