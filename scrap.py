@@ -3,7 +3,9 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 import time
 from helper.process_run_time_html import PageData, save_html_file
-from helper.web_page_constants import page_constants
+from helper.web_page_constants import page_constants, review_sec_constants
+from helper.review_processor import MapReviewProcessor
+
 
 # ------------------------------Enter valid map link------------------------------------
 # website = "https://www.google.com/maps/place/Dr.+Suraaj+Clinic+%E2%80%93+MD+Physician+%2F+clinic+and+wellness+center/@18.5962763,73.7703322,17z/data=!4m16!1m9!3m8!1s0x3bc2b9255067bb77:0x688a9d8672961266!2sDr.+Suraaj+Clinic+%E2%80%93+MD+Physician+%2F+clinic+and+wellness+center!8m2!3d18.5962712!4d73.7729071!9m1!1b1!16s%2Fg%2F11g9vvhgxy!3m5!1s0x3bc2b9255067bb77:0x688a9d8672961266!8m2!3d18.5962712!4d73.7729071!16s%2Fg%2F11g9vvhgxy?entry=ttu&g_ep=EgoyMDI1MDUyNi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
@@ -60,7 +62,7 @@ if review_sec_button is not None:
     retry_count = 0
     retry_threshold = 5
     if len(xpaths) != 0:
-
+        processed_reviews = MapReviewProcessor()
         next_idx = 0
         while True:
             review_xpaths = page_data.get_xpath_of_class(driver.page_source,
@@ -119,13 +121,18 @@ if review_sec_button is not None:
                 except:
                     pass
                 time.sleep(0.1)
+
+                # process each review and save as google collapses the more button when we scroll down
+                processed_reviews.elem_to_dict(elem.get_attribute('innerHTML'), review_sec_constants)
                 next_idx += 1
             html = driver.page_source
             save_html_file(html, save_file_name_html)
+            processed_reviews.save_as_csv(save_file_name_html.replace('.html', '.csv'))
             time.sleep(4)
 
         html = driver.page_source
         save_html_file(html, save_file_name_html)
+        processed_reviews.save_as_csv(save_file_name_html.replace('html', '.csv'))
         print("Total review captured: ",next_idx)
         # safely close the browser and exit the software
         driver.close()
