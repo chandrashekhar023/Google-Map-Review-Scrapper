@@ -70,7 +70,7 @@ if review_sec_button is not None:
                 while retry_count != retry_threshold:
                     # Try to scroll to the bottom
                     scrollable_page_height = driver.execute_script('return arguments[0].scrollHeight', scroll_element)
-                    for i in range(scrollable_page_height-scroll_base_height, scrollable_page_height,20):
+                    for i in range(scrollable_page_height-scroll_base_height, scrollable_page_height, 20):
                         driver.execute_script(f'arguments[0].scrollTo(0,{i})', scroll_element)
                         # time.sleep(0.1)
                     time.sleep(4)
